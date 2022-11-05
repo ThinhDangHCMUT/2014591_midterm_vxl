@@ -74,24 +74,3 @@ void getKeyInput(){
 	}
 }
 
-//unsigned char is_button_pressed(unsigned char button_number){
-//	if(button_number >= NO_OF_BUTTONS) return 0;
-//	else {
-//		if(flagForButtonPressed[button_number] == 1){
-//			flagForButtonPressed[button_number] = 0;
-//			return 1;
-//		}
-//		return 0;
-//	}
-//}
-//
-//unsigned char is_button_pressed_1s(unsigned char button_number){
-//	if(button_number >= NO_OF_BUTTONS) return 0xff;
-//	else {
-//			if(flagForButtonPressed1s[button_number] == 1){
-//				flagForButtonPressed1s[button_number] = 0;
-//				return 1;
-//			}
-//			return 0;
-//		}
-//}

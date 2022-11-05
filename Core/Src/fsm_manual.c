@@ -23,10 +23,15 @@ void fsm_manual_run(){
 		case AUTO:
 			// TODO:
 			if(timer1_flag == 1){
-				setTimer1(100);
-				if(counter == 0 ) led1Update(counter);
-				led1Update(counter--);
+				setTimer1(20);
+				led1Update(counter);
+				if(counter == 0){
+					clearTimer1();
+					led1Update(0);
+				}
+				counter--;
 			}
+
 			//RESET
 			if(flagForButtonPressed[0] == 1) {
 				counter = 0;
@@ -36,6 +41,7 @@ void fsm_manual_run(){
 			//INC
 			if(flagForButtonPressed[1] == 1){
 			    clearTimer1();
+			    setTimer3(500);
 			    flagForButtonPressed[1] = 0;
 				led1Update(counter+1);
 				wait = counter;
@@ -44,6 +50,7 @@ void fsm_manual_run(){
 			//DEC
 			if(flagForButtonPressed[2] == 1){
 				clearTimer1();
+				setTimer3(500);
 				flagForButtonPressed[2] = 0;
 				led1Update(counter-1);
 				wait = counter;
@@ -53,26 +60,32 @@ void fsm_manual_run(){
 		break;
 
 		case WAITING_FOR_SET:
+			if(timer3_flag == 1){
+				counter = wait;
+				status = AUTO;
+				setTimer1(1);
+			}
 			if(flagForButtonPressed[1] == 1) {
-				//index++;
 				wait++;
 				flagForButtonPressed[1] = 0;
+				setTimer3(500);
 			}
 			if(flagForButtonPressed[2] == 1) {
-				//index--;
-				wait++;
+				wait--;
 				flagForButtonPressed[2] = 0;
+				setTimer3(500);
 			}
 
 			if(flagForButtonPressed1s[1] == 1) {
-				//index++;
 				wait++;
 				flagForButtonPressed1s[1] = 0;
+				setTimer3(500);
 			}
 
 			if(flagForButtonPressed1s[2] == 1) {
 				wait--;
 				flagForButtonPressed1s[2] = 0;
+				setTimer3(500);
 			}
 
 			if(flagForButtonPressed[0] == 1){
