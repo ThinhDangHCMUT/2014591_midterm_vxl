@@ -103,7 +103,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		  if(timer2_flag == 1){
+		  if(timer2_flag == 1){ //led is going to toggle every seconds
 			  setTimer2(50);
 			  setD1();
 		  }
