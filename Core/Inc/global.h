@@ -2,7 +2,7 @@
  * global.h
  *
  *  Created on: Sep 30, 2022
- *      Author: hatru
+ *      Author: thinhdang
  */
 #ifndef INC_GLOBAL_H_
 #define INC_GLOBAL_H_

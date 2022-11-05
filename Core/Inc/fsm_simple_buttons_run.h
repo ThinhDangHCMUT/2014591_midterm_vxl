@@ -2,7 +2,7 @@
  * fsm_manual.h
  *
  *  Created on: Oct 7, 2022
- *      Author: phucd
+ *      Author: thindangh
  */
 
 #ifndef INC_FSM_SIMPLE_BUTTONS_RUN_H_

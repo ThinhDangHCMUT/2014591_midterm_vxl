@@ -2,7 +2,7 @@
  * INC_BUTTON.c
  *
  *  Created on: Sep 24, 2022
- *      Author: hatru
+ *      Author: thinhdang
  */
 
 #include "button.h"
@@ -61,12 +61,12 @@ void getKeyInput(){
 					subKeyProcess1(i);
 					counterForButtonPressed3s[i] = DURATION_FOR_AUTO_INCREASING;
 				}
-			}else{
+			}else{  //press hold 3s
 				counterForButtonPressed3s[i]--;
 				if(counterForButtonPressed3s[i] <= 0){
 					if(keyReg2[i] == PRESSED_STATE){
 						subKeyProcess2(i);
-						counterForButtonPressed3s[i] = DURATION_FOR_HOLDING;
+						counterForButtonPressed3s[i] = DURATION_FOR_HOLDING; //set duration hold to 1s
 					}
 				}
 			}

@@ -2,7 +2,7 @@
  * SOFTWARE_TIMER.h
  *
  *  Created on: Sep 24, 2022
- *      Author: hatrungquyen
+ *      Author: thinhdang
  */
 
 #ifndef __SOFTWARE_TIMER_
