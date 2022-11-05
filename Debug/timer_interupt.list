@@ -276,7 +276,7 @@ void getKeyInput(){
  800028c:	f842 1023 	str.w	r1, [r2, r3, lsl #2]
  8000290:	e01c      	b.n	80002cc <getKeyInput+0xec>
 				}
-			}else{
+			}else{  //press hold 3s
 				counterForButtonPressed3s[i]--;
  8000292:	4a18      	ldr	r2, [pc, #96]	; (80002f4 <getKeyInput+0x114>)
  8000294:	687b      	ldr	r3, [r7, #4]
@@ -301,7 +301,7 @@ void getKeyInput(){
 						subKeyProcess2(i);
  80002bc:	6878      	ldr	r0, [r7, #4]
  80002be:	f7ff ff7f 	bl	80001c0 <subKeyProcess2>
-						counterForButtonPressed3s[i] = DURATION_FOR_HOLDING;
+						counterForButtonPressed3s[i] = DURATION_FOR_HOLDING; //set duration hold to 1s
  80002c2:	4a0c      	ldr	r2, [pc, #48]	; (80002f4 <getKeyInput+0x114>)
  80002c4:	687b      	ldr	r3, [r7, #4]
  80002c6:	2164      	movs	r1, #100	; 0x64
@@ -332,7 +332,7 @@ void getKeyInput(){
  80002f4:	2000001c 	.word	0x2000001c
 
 080002f8 <fsm_simple_buttons_run>:
- *      Author: phucd
+ *      Author: thinhdang
  */
 
 #include <fsm_simple_buttons_run.h>
@@ -387,20 +387,20 @@ void fsm_simple_buttons_run(){
  800033e:	f000 fbbf 	bl	8000ac0 <setTimer1>
 		break;
  8000342:	e0ce      	b.n	80004e2 <fsm_simple_buttons_run+0x1ea>
-			if(timer1_flag == 1){
+			if(timer1_flag == 1){ //AUTO STATE
  8000344:	4b6a      	ldr	r3, [pc, #424]	; (80004f0 <fsm_simple_buttons_run+0x1f8>)
  8000346:	681b      	ldr	r3, [r3, #0]
  8000348:	2b01      	cmp	r3, #1
  800034a:	d115      	bne.n	8000378 <fsm_simple_buttons_run+0x80>
-				setTimer1(20);
- 800034c:	2014      	movs	r0, #20
+				setTimer1(100);
+ 800034c:	2064      	movs	r0, #100	; 0x64
  800034e:	f000 fbb7 	bl	8000ac0 <setTimer1>
 				led1Update(counter);
  8000352:	4b69      	ldr	r3, [pc, #420]	; (80004f8 <fsm_simple_buttons_run+0x200>)
  8000354:	681b      	ldr	r3, [r3, #0]
  8000356:	4618      	mov	r0, r3
  8000358:	f000 f8e0 	bl	800051c <led1Update>
-				if(counter == 0){
+				if(counter == 0){   //state STOP
  800035c:	4b66      	ldr	r3, [pc, #408]	; (80004f8 <fsm_simple_buttons_run+0x200>)
  800035e:	681b      	ldr	r3, [r3, #0]
  8000360:	2b00      	cmp	r3, #0
@@ -436,8 +436,8 @@ void fsm_simple_buttons_run(){
  8000392:	d115      	bne.n	80003c0 <fsm_simple_buttons_run+0xc8>
 			    clearTimer1();
  8000394:	f000 fbd0 	bl	8000b38 <clearTimer1>
-			    setTimer3(500);
- 8000398:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+			    setTimer3(1000);    //Set timer3 to wait for 10s if there are no button is pressed
+ 8000398:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
  800039c:	f000 fbb8 	bl	8000b10 <setTimer3>
 			    flagForButtonPressed[1] = 0;
  80003a0:	4b54      	ldr	r3, [pc, #336]	; (80004f4 <fsm_simple_buttons_run+0x1fc>)
@@ -465,8 +465,8 @@ void fsm_simple_buttons_run(){
  80003c6:	f040 808e 	bne.w	80004e6 <fsm_simple_buttons_run+0x1ee>
 				clearTimer1();
  80003ca:	f000 fbb5 	bl	8000b38 <clearTimer1>
-				setTimer3(500);
- 80003ce:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+				setTimer3(1000);    //Set timer3 to wait for 10s if there are no button is pressed
+ 80003ce:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
  80003d2:	f000 fb9d 	bl	8000b10 <setTimer3>
 				flagForButtonPressed[2] = 0;
  80003d6:	4b47      	ldr	r3, [pc, #284]	; (80004f4 <fsm_simple_buttons_run+0x1fc>)
@@ -489,7 +489,7 @@ void fsm_simple_buttons_run(){
  80003f4:	601a      	str	r2, [r3, #0]
 		break;
  80003f6:	e076      	b.n	80004e6 <fsm_simple_buttons_run+0x1ee>
-			if(timer3_flag == 1){
+			if(timer3_flag == 1){  //timer3 is over and it turn into AUTO state
  80003f8:	4b41      	ldr	r3, [pc, #260]	; (8000500 <fsm_simple_buttons_run+0x208>)
  80003fa:	681b      	ldr	r3, [r3, #0]
  80003fc:	2b01      	cmp	r3, #1
@@ -503,7 +503,7 @@ void fsm_simple_buttons_run(){
  8000408:	4b38      	ldr	r3, [pc, #224]	; (80004ec <fsm_simple_buttons_run+0x1f4>)
  800040a:	220e      	movs	r2, #14
  800040c:	601a      	str	r2, [r3, #0]
-				setTimer1(1);
+				setTimer1(1);  //setTimer1 to run count down in AUTO state
  800040e:	2001      	movs	r0, #1
  8000410:	f000 fb56 	bl	8000ac0 <setTimer1>
 			if(flagForButtonPressed[1] == 1) {
@@ -521,8 +521,8 @@ void fsm_simple_buttons_run(){
  8000426:	4b33      	ldr	r3, [pc, #204]	; (80004f4 <fsm_simple_buttons_run+0x1fc>)
  8000428:	2200      	movs	r2, #0
  800042a:	605a      	str	r2, [r3, #4]
-				setTimer3(500);
- 800042c:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+				setTimer3(1000);  //Set timer3 to wait for 10s if there are no button is pressed
+ 800042c:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
  8000430:	f000 fb6e 	bl	8000b10 <setTimer3>
 			if(flagForButtonPressed[2] == 1) {
  8000434:	4b2f      	ldr	r3, [pc, #188]	; (80004f4 <fsm_simple_buttons_run+0x1fc>)
@@ -539,10 +539,10 @@ void fsm_simple_buttons_run(){
  8000446:	4b2b      	ldr	r3, [pc, #172]	; (80004f4 <fsm_simple_buttons_run+0x1fc>)
  8000448:	2200      	movs	r2, #0
  800044a:	609a      	str	r2, [r3, #8]
-				setTimer3(500);
- 800044c:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+				setTimer3(1000);   //Set timer3 to wait for 10s if there are no button is pressed
+ 800044c:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
  8000450:	f000 fb5e 	bl	8000b10 <setTimer3>
-			if(flagForButtonPressed3s[1] == 1) {
+			if(flagForButtonPressed3s[1] == 1) { //hold increase button in 3s and counter is increased
  8000454:	4b2b      	ldr	r3, [pc, #172]	; (8000504 <fsm_simple_buttons_run+0x20c>)
  8000456:	685b      	ldr	r3, [r3, #4]
  8000458:	2b01      	cmp	r3, #1
@@ -557,10 +557,10 @@ void fsm_simple_buttons_run(){
  8000466:	4b27      	ldr	r3, [pc, #156]	; (8000504 <fsm_simple_buttons_run+0x20c>)
  8000468:	2200      	movs	r2, #0
  800046a:	605a      	str	r2, [r3, #4]
-				setTimer3(500);
- 800046c:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+				setTimer3(1000);   //Set timer3 to wait for 10s if there are no button is pressed
+ 800046c:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
  8000470:	f000 fb4e 	bl	8000b10 <setTimer3>
-			if(flagForButtonPressed3s[2] == 1) {
+			if(flagForButtonPressed3s[2] == 1) { //hold decrease button in 3s and counter is decreased
  8000474:	4b23      	ldr	r3, [pc, #140]	; (8000504 <fsm_simple_buttons_run+0x20c>)
  8000476:	689b      	ldr	r3, [r3, #8]
  8000478:	2b01      	cmp	r3, #1
@@ -575,10 +575,10 @@ void fsm_simple_buttons_run(){
  8000486:	4b1f      	ldr	r3, [pc, #124]	; (8000504 <fsm_simple_buttons_run+0x20c>)
  8000488:	2200      	movs	r2, #0
  800048a:	609a      	str	r2, [r3, #8]
-				setTimer3(500);
- 800048c:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+				setTimer3(1000);   //Set timer3 to wait for 10s if there are no button is pressed
+ 800048c:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
  8000490:	f000 fb3e 	bl	8000b10 <setTimer3>
-			if(flagForButtonPressed[0] == 1){
+			if(flagForButtonPressed[0] == 1){  //After reset pressed, counter is set to 0 and it still in AUTO state
  8000494:	4b17      	ldr	r3, [pc, #92]	; (80004f4 <fsm_simple_buttons_run+0x1fc>)
  8000496:	681b      	ldr	r3, [r3, #0]
  8000498:	2b01      	cmp	r3, #1
@@ -599,7 +599,7 @@ void fsm_simple_buttons_run(){
 				setTimer1(1);
  80004b0:	2001      	movs	r0, #1
  80004b2:	f000 fb05 	bl	8000ac0 <setTimer1>
-			if(wait > 9) wait = 0;
+			if(wait > 9) wait = 0;   //loop in 0 - 9
  80004b6:	4b11      	ldr	r3, [pc, #68]	; (80004fc <fsm_simple_buttons_run+0x204>)
  80004b8:	681b      	ldr	r3, [r3, #0]
  80004ba:	2b09      	cmp	r3, #9
@@ -607,7 +607,7 @@ void fsm_simple_buttons_run(){
  80004be:	4b0f      	ldr	r3, [pc, #60]	; (80004fc <fsm_simple_buttons_run+0x204>)
  80004c0:	2200      	movs	r2, #0
  80004c2:	601a      	str	r2, [r3, #0]
-			if(wait < 0) wait = 9;
+			if(wait < 0) wait = 9;   //loop in 9 - 0
  80004c4:	4b0d      	ldr	r3, [pc, #52]	; (80004fc <fsm_simple_buttons_run+0x204>)
  80004c6:	681b      	ldr	r3, [r3, #0]
  80004c8:	2b00      	cmp	r3, #0
