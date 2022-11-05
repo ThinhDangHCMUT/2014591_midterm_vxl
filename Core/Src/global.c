@@ -10,6 +10,8 @@ int status_1 = 0;
 int status_2 = 0;
 int status_3 = 0;
 
+int index = 9;
+
 int time_1 = 0;
 int time_2 = 0;
 

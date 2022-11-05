@@ -8,7 +8,8 @@
 #include "button.h"
 
 #define NO_OF_BUTTONS						3
-#define DURATION_FOR_AUTO_INCREASING		100
+#define DURATION_FOR_AUTO_INCREASING		300
+#define DURATION_FOR_HOLDING				100
 #define PRESSED_STATE						GPIO_PIN_RESET
 #define NORMAL_STATE						GPIO_PIN_SET
 
@@ -65,8 +66,8 @@ void getKeyInput(){
 				if(counterForButtonPressed1s[i] <= 0){
 					if(keyReg2[i] == PRESSED_STATE){
 						subKeyProcess2(i);
+						counterForButtonPressed1s[i] = DURATION_FOR_HOLDING;
 					}
-				counterForButtonPressed1s[i] = DURATION_FOR_AUTO_INCREASING;
 				}
 			}
 		}
@@ -83,6 +84,7 @@ unsigned char is_button_pressed(unsigned char button_number){
 		return 0;
 	}
 }
+
 unsigned char is_button_pressed_1s(unsigned char button_number){
 	if(button_number >= NO_OF_BUTTONS) return 0xff;
 	else {

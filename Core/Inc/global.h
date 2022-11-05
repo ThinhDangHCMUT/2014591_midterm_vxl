@@ -16,6 +16,8 @@ extern int status_1;
 extern int status_2;
 extern int status_3;
 
+extern int index;
+
 extern int time_1;
 extern int time_2;
 
@@ -24,6 +26,9 @@ extern int green_time;
 extern int yellow_time;
 
 #define INIT 			1
+
+#define MANUAL 			200
+#define WAITING_FOR_SET 300
 
 #define NORMAL_RED 		2
 #define NORMAL_GREEN 	3
