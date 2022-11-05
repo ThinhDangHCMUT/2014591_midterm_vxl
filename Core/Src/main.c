@@ -98,7 +98,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-	  status_3 = INIT;
+	  status= INIT;
 	  setTimer2(50);
 	  setTimer1(1);
 	  while (1)

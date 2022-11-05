@@ -13,9 +13,10 @@
 #include "led_control.h"
 
 
-extern int status_3;
+extern int status;
 
-extern int index;
+extern int counter;
+extern int wait;
 
 
 #define INIT 			2

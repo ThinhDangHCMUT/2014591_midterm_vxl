@@ -12,10 +12,6 @@ void setD1(){
 	HAL_GPIO_TogglePin(GPIOA, D1_Pin);
 }
 
-void clearLed(int index){
-	led1Update(index);
-}
-
 void led1Update(int num){
 	switch(num){
 		case 0:
