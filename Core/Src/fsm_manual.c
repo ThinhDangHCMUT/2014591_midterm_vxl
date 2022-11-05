@@ -11,9 +11,10 @@ void fsm_manual_run(){
 	switch(status_3){
 		case INIT:
 				led1Update(10);
-				setTimer1(100);
+				flagForButtonPressed[0] = 0;
+				flagForButtonPressed[1] = 0;
+			    flagForButtonPressed[2] = 0;
 				status_3 = AUTO;
-
 		break;
 
 		case AUTO:  //maual

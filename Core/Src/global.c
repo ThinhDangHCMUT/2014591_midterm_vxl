@@ -6,9 +6,7 @@
  */
 #include "global.h"
 
-int status_1 = 0;
-int status_2 = 0;
-int status_3 = 0;
+int status_3 = INIT;
 
 int index = 9;
 
