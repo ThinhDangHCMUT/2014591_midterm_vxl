@@ -20,9 +20,9 @@ static GPIO_PinState keyReg2[NO_OF_BUTTONS];
 static GPIO_PinState keyReg0[NO_OF_BUTTONS];
 
 
-int flagForButtonPressed[NO_OF_BUTTONS];
-static int flagForButtonPressed1s[NO_OF_BUTTONS];
-static int counterForButtonPressed1s[NO_OF_BUTTONS]= {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
+int flagForButtonPressed[NO_OF_BUTTONS] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
+int flagForButtonPressed1s[NO_OF_BUTTONS] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
+int counterForButtonPressed1s[NO_OF_BUTTONS]= {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
 
 
 GPIO_PinState isKeyInput(int index){
