@@ -11,9 +11,11 @@ void fsm_manual_run(){
 	switch(status){
 		case INIT:
 			if(timer1_flag == 1){
+				//Clear All Flag Button
 				flagForButtonPressed[0] = 0;
 				flagForButtonPressed[1] = 0;
 				flagForButtonPressed[2] = 0;
+				//Clear 7 Segment
 				led1Update(10);
 				status = AUTO;
 				setTimer1(100);
@@ -22,6 +24,7 @@ void fsm_manual_run(){
 
 		case AUTO:
 			// TODO:
+			//Auto Count Down
 			if(timer1_flag == 1){
 				setTimer1(20);
 				led1Update(counter);
@@ -38,7 +41,7 @@ void fsm_manual_run(){
 				flagForButtonPressed[0] = 0;
 			}
 			//CHANGE TO WAITING FOR SET
-			//INC
+			//INCREASE
 			if(flagForButtonPressed[1] == 1){
 			    clearTimer1();
 			    setTimer3(500);
@@ -47,7 +50,7 @@ void fsm_manual_run(){
 				wait = counter;
 				status = WAITING_FOR_SET;
 			}
-			//DEC
+			//DECREASE
 			if(flagForButtonPressed[2] == 1){
 				clearTimer1();
 				setTimer3(500);
@@ -60,34 +63,39 @@ void fsm_manual_run(){
 		break;
 
 		case WAITING_FOR_SET:
+			//Waiting for 10s and change to AUTO state
 			if(timer3_flag == 1){
 				counter = wait;
 				status = AUTO;
 				setTimer1(1);
 			}
+			//RELEASE BUTTON
+			//INCREASE
 			if(flagForButtonPressed[1] == 1) {
 				wait++;
 				flagForButtonPressed[1] = 0;
 				setTimer3(500);
 			}
+			//DECREASE
 			if(flagForButtonPressed[2] == 1) {
 				wait--;
 				flagForButtonPressed[2] = 0;
 				setTimer3(500);
 			}
-
-			if(flagForButtonPressed1s[1] == 1) {
+			//HOLD BUTTON
+			//INCREASE
+			if(flagForButtonPressed3s[1] == 1) {
 				wait++;
-				flagForButtonPressed1s[1] = 0;
+				flagForButtonPressed3s[1] = 0;
 				setTimer3(500);
 			}
-
-			if(flagForButtonPressed1s[2] == 1) {
+			//DECREASE
+			if(flagForButtonPressed3s[2] == 1) {
 				wait--;
-				flagForButtonPressed1s[2] = 0;
+				flagForButtonPressed3s[2] = 0;
 				setTimer3(500);
 			}
-
+			//RESET
 			if(flagForButtonPressed[0] == 1){
 				flagForButtonPressed[0] = 0;
 				counter = wait;
@@ -96,6 +104,7 @@ void fsm_manual_run(){
 			}
 			if(wait > 9) wait = 0;
 			if(wait < 0) wait = 9;
+			//DISPLAY
 			led1Update(wait);
 			break;
 

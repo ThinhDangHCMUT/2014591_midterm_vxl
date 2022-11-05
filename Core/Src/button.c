@@ -21,8 +21,8 @@ static GPIO_PinState keyReg0[NO_OF_BUTTONS];
 
 
 int flagForButtonPressed[NO_OF_BUTTONS] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
-int flagForButtonPressed1s[NO_OF_BUTTONS] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
-int counterForButtonPressed1s[NO_OF_BUTTONS]= {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
+int flagForButtonPressed3s[NO_OF_BUTTONS] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
+int counterForButtonPressed3s[NO_OF_BUTTONS]= {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
 
 
 GPIO_PinState isKeyInput(int index){
@@ -43,7 +43,7 @@ void subKeyProcess1(int index){
 }
 
 void subKeyProcess2(int index){
-	flagForButtonPressed1s[index] = 1;
+	flagForButtonPressed3s[index] = 1;
 }
 
 void getKeyInput(){
@@ -59,18 +59,19 @@ void getKeyInput(){
 				prev_Key[i] = keyReg2[i];
 				if(keyReg2[i] == PRESSED_STATE){
 					subKeyProcess1(i);
-					counterForButtonPressed1s[i] = DURATION_FOR_AUTO_INCREASING;
+					counterForButtonPressed3s[i] = DURATION_FOR_AUTO_INCREASING;
 				}
 			}else{
-				counterForButtonPressed1s[i]--;
-				if(counterForButtonPressed1s[i] <= 0){
+				counterForButtonPressed3s[i]--;
+				if(counterForButtonPressed3s[i] <= 0){
 					if(keyReg2[i] == PRESSED_STATE){
 						subKeyProcess2(i);
-						counterForButtonPressed1s[i] = DURATION_FOR_HOLDING;
+						counterForButtonPressed3s[i] = DURATION_FOR_HOLDING;
 					}
 				}
 			}
 		}
 	}
 }
+
 

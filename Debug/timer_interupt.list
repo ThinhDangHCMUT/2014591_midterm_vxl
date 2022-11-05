@@ -27,9 +27,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  0002003c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00008fb4  00000000  00000000  00020065  2**0
+ 12 .debug_info   00008fb3  00000000  00000000  00020065  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 0000199e  00000000  00000000  00029019  2**0
+ 13 .debug_abbrev 0000199e  00000000  00000000  00029018  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  14 .debug_aranges 00000a40  00000000  00000000  0002a9b8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -78,8 +78,8 @@ Disassembly of section .text:
 
 0800014c <isKeyInput>:
 int flagForButtonPressed[NO_OF_BUTTONS] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
-int flagForButtonPressed1s[NO_OF_BUTTONS] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
-int counterForButtonPressed1s[NO_OF_BUTTONS]= {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
+int flagForButtonPressed3s[NO_OF_BUTTONS] = {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
+int counterForButtonPressed3s[NO_OF_BUTTONS]= {NORMAL_STATE,NORMAL_STATE,NORMAL_STATE};
 
 
 GPIO_PinState isKeyInput(int index){
@@ -160,7 +160,7 @@ void subKeyProcess2(int index){
  80001c2:	b083      	sub	sp, #12
  80001c4:	af00      	add	r7, sp, #0
  80001c6:	6078      	str	r0, [r7, #4]
-	flagForButtonPressed1s[index] = 1;
+	flagForButtonPressed3s[index] = 1;
  80001c8:	4a04      	ldr	r2, [pc, #16]	; (80001dc <subKeyProcess2+0x1c>)
  80001ca:	687b      	ldr	r3, [r7, #4]
  80001cc:	2101      	movs	r1, #1
@@ -269,7 +269,7 @@ void getKeyInput(){
 					subKeyProcess1(i);
  800027e:	6878      	ldr	r0, [r7, #4]
  8000280:	f7ff ff8e 	bl	80001a0 <subKeyProcess1>
-					counterForButtonPressed1s[i] = DURATION_FOR_AUTO_INCREASING;
+					counterForButtonPressed3s[i] = DURATION_FOR_AUTO_INCREASING;
  8000284:	4a1b      	ldr	r2, [pc, #108]	; (80002f4 <getKeyInput+0x114>)
  8000286:	687b      	ldr	r3, [r7, #4]
  8000288:	f44f 7196 	mov.w	r1, #300	; 0x12c
@@ -277,7 +277,7 @@ void getKeyInput(){
  8000290:	e01c      	b.n	80002cc <getKeyInput+0xec>
 				}
 			}else{
-				counterForButtonPressed1s[i]--;
+				counterForButtonPressed3s[i]--;
  8000292:	4a18      	ldr	r2, [pc, #96]	; (80002f4 <getKeyInput+0x114>)
  8000294:	687b      	ldr	r3, [r7, #4]
  8000296:	f852 3023 	ldr.w	r3, [r2, r3, lsl #2]
@@ -285,7 +285,7 @@ void getKeyInput(){
  800029c:	4915      	ldr	r1, [pc, #84]	; (80002f4 <getKeyInput+0x114>)
  800029e:	687b      	ldr	r3, [r7, #4]
  80002a0:	f841 2023 	str.w	r2, [r1, r3, lsl #2]
-				if(counterForButtonPressed1s[i] <= 0){
+				if(counterForButtonPressed3s[i] <= 0){
  80002a4:	4a13      	ldr	r2, [pc, #76]	; (80002f4 <getKeyInput+0x114>)
  80002a6:	687b      	ldr	r3, [r7, #4]
  80002a8:	f852 3023 	ldr.w	r3, [r2, r3, lsl #2]
@@ -301,7 +301,7 @@ void getKeyInput(){
 						subKeyProcess2(i);
  80002bc:	6878      	ldr	r0, [r7, #4]
  80002be:	f7ff ff7f 	bl	80001c0 <subKeyProcess2>
-						counterForButtonPressed1s[i] = DURATION_FOR_HOLDING;
+						counterForButtonPressed3s[i] = DURATION_FOR_HOLDING;
  80002c2:	4a0c      	ldr	r2, [pc, #48]	; (80002f4 <getKeyInput+0x114>)
  80002c4:	687b      	ldr	r3, [r7, #4]
  80002c6:	2164      	movs	r1, #100	; 0x64
@@ -542,7 +542,7 @@ void fsm_manual_run(){
 				setTimer3(500);
  800044c:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
  8000450:	f000 fb5e 	bl	8000b10 <setTimer3>
-			if(flagForButtonPressed1s[1] == 1) {
+			if(flagForButtonPressed3s[1] == 1) {
  8000454:	4b2b      	ldr	r3, [pc, #172]	; (8000504 <fsm_manual_run+0x20c>)
  8000456:	685b      	ldr	r3, [r3, #4]
  8000458:	2b01      	cmp	r3, #1
@@ -553,14 +553,14 @@ void fsm_manual_run(){
  8000460:	3301      	adds	r3, #1
  8000462:	4a26      	ldr	r2, [pc, #152]	; (80004fc <fsm_manual_run+0x204>)
  8000464:	6013      	str	r3, [r2, #0]
-				flagForButtonPressed1s[1] = 0;
+				flagForButtonPressed3s[1] = 0;
  8000466:	4b27      	ldr	r3, [pc, #156]	; (8000504 <fsm_manual_run+0x20c>)
  8000468:	2200      	movs	r2, #0
  800046a:	605a      	str	r2, [r3, #4]
 				setTimer3(500);
  800046c:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
  8000470:	f000 fb4e 	bl	8000b10 <setTimer3>
-			if(flagForButtonPressed1s[2] == 1) {
+			if(flagForButtonPressed3s[2] == 1) {
  8000474:	4b23      	ldr	r3, [pc, #140]	; (8000504 <fsm_manual_run+0x20c>)
  8000476:	689b      	ldr	r3, [r3, #8]
  8000478:	2b01      	cmp	r3, #1
@@ -571,7 +571,7 @@ void fsm_manual_run(){
  8000480:	3b01      	subs	r3, #1
  8000482:	4a1e      	ldr	r2, [pc, #120]	; (80004fc <fsm_manual_run+0x204>)
  8000484:	6013      	str	r3, [r2, #0]
-				flagForButtonPressed1s[2] = 0;
+				flagForButtonPressed3s[2] = 0;
  8000486:	4b1f      	ldr	r3, [pc, #124]	; (8000504 <fsm_manual_run+0x20c>)
  8000488:	2200      	movs	r2, #0
  800048a:	609a      	str	r2, [r3, #8]
@@ -1151,7 +1151,6 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
 	  status= INIT;
  800089a:	4b0b      	ldr	r3, [pc, #44]	; (80008c8 <main+0x48>)
  800089c:	2202      	movs	r2, #2

@@ -13,7 +13,7 @@
 #define NO_OF_BUTTONS		3
 
 extern int flagForButtonPressed[NO_OF_BUTTONS];
-extern int flagForButtonPressed1s[NO_OF_BUTTONS];
+extern int flagForButtonPressed3s[NO_OF_BUTTONS];
 
 
 void getKeyInput();

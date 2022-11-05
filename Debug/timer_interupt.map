@@ -2856,12 +2856,12 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .data.flagForButtonPressed
                 0x0000000020000004        0xc ./Core/Src/button.o
                 0x0000000020000004                flagForButtonPressed
- .data.flagForButtonPressed1s
+ .data.flagForButtonPressed3s
                 0x0000000020000010        0xc ./Core/Src/button.o
-                0x0000000020000010                flagForButtonPressed1s
- .data.counterForButtonPressed1s
+                0x0000000020000010                flagForButtonPressed3s
+ .data.counterForButtonPressed3s
                 0x000000002000001c        0xc ./Core/Src/button.o
-                0x000000002000001c                counterForButtonPressed1s
+                0x000000002000001c                counterForButtonPressed3s
  .data.status   0x0000000020000028        0x4 ./Core/Src/global.o
                 0x0000000020000028                status
  .data.counter  0x000000002000002c        0x4 ./Core/Src/global.o
@@ -3012,23 +3012,23 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
 LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libm.a
 LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7-m/nofp\libgcc.a
 
-.debug_info     0x0000000000000000     0x8fb4
+.debug_info     0x0000000000000000     0x8fb3
  .debug_info    0x0000000000000000      0x387 ./Core/Src/button.o
  .debug_info    0x0000000000000387      0x226 ./Core/Src/fsm_manual.o
  .debug_info    0x00000000000005ad      0x236 ./Core/Src/global.o
  .debug_info    0x00000000000007e3      0x2de ./Core/Src/led_control.o
- .debug_info    0x0000000000000ac1      0xc23 ./Core/Src/main.o
- .debug_info    0x00000000000016e4      0x285 ./Core/Src/software_timer.o
- .debug_info    0x0000000000001969      0xa04 ./Core/Src/stm32f1xx_hal_msp.o
- .debug_info    0x000000000000236d      0x7b4 ./Core/Src/stm32f1xx_it.o
- .debug_info    0x0000000000002b21      0x2be ./Core/Src/system_stm32f1xx.o
- .debug_info    0x0000000000002ddf       0x22 ./Core/Startup/startup_stm32f103c6ux.o
- .debug_info    0x0000000000002e01      0x74c ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
- .debug_info    0x000000000000354d      0xbbe ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
- .debug_info    0x000000000000410b      0x701 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
- .debug_info    0x000000000000480c      0x88e ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
- .debug_info    0x000000000000509a     0x2a45 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o
- .debug_info    0x0000000000007adf     0x14d5 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
+ .debug_info    0x0000000000000ac1      0xc22 ./Core/Src/main.o
+ .debug_info    0x00000000000016e3      0x285 ./Core/Src/software_timer.o
+ .debug_info    0x0000000000001968      0xa04 ./Core/Src/stm32f1xx_hal_msp.o
+ .debug_info    0x000000000000236c      0x7b4 ./Core/Src/stm32f1xx_it.o
+ .debug_info    0x0000000000002b20      0x2be ./Core/Src/system_stm32f1xx.o
+ .debug_info    0x0000000000002dde       0x22 ./Core/Startup/startup_stm32f103c6ux.o
+ .debug_info    0x0000000000002e00      0x74c ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
+ .debug_info    0x000000000000354c      0xbbe ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
+ .debug_info    0x000000000000410a      0x701 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
+ .debug_info    0x000000000000480b      0x88e ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
+ .debug_info    0x0000000000005099     0x2a45 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o
+ .debug_info    0x0000000000007ade     0x14d5 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
 
 .debug_abbrev   0x0000000000000000     0x199e
  .debug_abbrev  0x0000000000000000      0x18e ./Core/Src/button.o

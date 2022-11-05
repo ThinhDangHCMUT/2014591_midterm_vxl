@@ -23,8 +23,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "global.h"
-//#include "fsm_automatic.h"
-//#include "fsm_automatic_2.h"
 #include "fsm_manual.h"
 /* USER CODE END Includes */
 
@@ -97,7 +95,6 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
 	  status= INIT;
 	  setTimer2(50);
 	  setTimer1(1);
