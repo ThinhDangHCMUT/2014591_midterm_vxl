@@ -34,6 +34,7 @@ void fsm_simple_buttons_run(){
 				}
 				counter--;
 			}
+			
 			//RESET
 			//After reset pressed, counter is set to 0 and it still in AUTO state
 			if(flagForButtonPressed[0] == 1) {
