@@ -27,7 +27,7 @@ extern int yellow_time;
 
 #define INIT 			1
 
-#define MANUAL 			200
+#define AUTO 			200
 #define WAITING_FOR_SET 300
 
 #define NORMAL_RED 		2

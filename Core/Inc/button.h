@@ -10,6 +10,12 @@
 
 #include "main.h"
 
+#define NO_OF_BUTTONS		3
+
+extern int flagForButtonPressed[NO_OF_BUTTONS];
+static int flagForButtonPressed1s[NO_OF_BUTTONS];
+
+
 void getKeyInput();
 unsigned char is_button_pressed(unsigned char button_number);
 unsigned char is_button_pressed_1s(unsigned char button_number);

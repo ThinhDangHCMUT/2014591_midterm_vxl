@@ -100,6 +100,7 @@ int main(void)
 
 	  status_3 = INIT;
 	  setTimer2(50);
+	  setTimer1(1);
 	  while (1)
 	  {
     /* USER CODE END WHILE */
@@ -109,7 +110,7 @@ int main(void)
 			  setTimer2(50);
 			  setD1();
 		  }
-	fsm_manual_run();
+		  fsm_manual_run();
   /* USER CODE END 3 */
 }
 }

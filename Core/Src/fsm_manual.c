@@ -12,10 +12,11 @@ void fsm_manual_run(){
 		case INIT:
 				led1Update(10);
 				setTimer1(100);
-				status_3 = MANUAL;
+				status_3 = AUTO;
+
 		break;
 
-		case MANUAL:  //maual
+		case AUTO:  //maual
 			// TODO:
 			if(timer1_flag == 1){
 				setTimer1(100);
@@ -23,18 +24,21 @@ void fsm_manual_run(){
 				led1Update(index--);
 			}
 
-			if(is_button_pressed(0) == 1){ //reset
+			if(flagForButtonPressed[0] == 1) {
 				index = 0;
+				flagForButtonPressed[0] = 0;
 			}
 
-			if(is_button_pressed(1) == 1){
-				clearTimer1(); //increase
+			if(flagForButtonPressed[1] == 1){
+			    clearTimer1();      //increase
+			    flagForButtonPressed[1] = 0;
 				led1Update(index+1);
 				status_3 = WAITING_FOR_SET;
 			}
 
-			if(is_button_pressed(2) == 1){
-				clearTimer1();  //increase
+			if(flagForButtonPressed[2] == 1){
+				clearTimer1();      //increase
+				flagForButtonPressed[2] = 0;
 				led1Update(index-1);
 				status_3 = WAITING_FOR_SET;
 			}
@@ -42,16 +46,30 @@ void fsm_manual_run(){
 		break;
 
 		case WAITING_FOR_SET:
-			//led1Update(index);
-			if(is_button_pressed(1) == 1) index++;
-			if(is_button_pressed(2) == 1) index--;
+			led1Update(index);
+			if(flagForButtonPressed[1] == 1) {
+				index++;
+				flagForButtonPressed[1] = 0;
+			}
+			if(flagForButtonPressed[2] == 1) {
+				index--;
+				flagForButtonPressed[2] = 0;
+			}
 
-			if(is_button_pressed_1s(1) == 1) index++;
+			if(flagForButtonPressed1s[1] == 1) {
+				index++;
+				flagForButtonPressed1s[1] = 0;
+			}
 
-			if(is_button_pressed_1s(2) == 1) index--;
+			if(flagForButtonPressed1s[2] == 1) {
+				index--;
+				flagForButtonPressed1s[2] = 0;
+			}
 
-			if(is_button_pressed(0) == 1){
-				status_3 = MANUAL;
+			if(flagForButtonPressed[0] == 1){
+				flagForButtonPressed[0] = 0;
+				status_3 = AUTO;
+				setTimer1(1);
 			}
 			if(index > 9) index = 0;
 			if(index < 0) index = 9;
