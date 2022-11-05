@@ -18,12 +18,12 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <fsm_simple_buttons_run.h>
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "global.h"
-#include "fsm_manual.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -107,7 +107,7 @@ int main(void)
 			  setTimer2(50);
 			  setD1();
 		  }
-		  fsm_manual_run();
+		  fsm_simple_buttons_run();
   /* USER CODE END 3 */
 }
 }

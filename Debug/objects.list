@@ -1,5 +1,5 @@
 "./Core/Src/button.o"
-"./Core/Src/fsm_manual.o"
+"./Core/Src/fsm_simple_buttons_run.o"
 "./Core/Src/global.o"
 "./Core/Src/led_control.o"
 "./Core/Src/main.o"

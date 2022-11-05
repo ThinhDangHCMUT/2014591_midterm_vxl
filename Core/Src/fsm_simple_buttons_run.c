@@ -5,9 +5,9 @@
  *      Author: phucd
  */
 
-#include "fsm_manual.h"
+#include <fsm_simple_buttons_run.h>
 
-void fsm_manual_run(){
+void fsm_simple_buttons_run(){
 	switch(status){
 		case INIT:
 			if(timer1_flag == 1){

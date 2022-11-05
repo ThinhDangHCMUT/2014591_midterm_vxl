@@ -6,7 +6,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Core/Src/button.c \
-../Core/Src/fsm_manual.c \
+../Core/Src/fsm_simple_buttons_run.c \
 ../Core/Src/global.c \
 ../Core/Src/led_control.c \
 ../Core/Src/main.c \
@@ -19,7 +19,7 @@ C_SRCS += \
 
 OBJS += \
 ./Core/Src/button.o \
-./Core/Src/fsm_manual.o \
+./Core/Src/fsm_simple_buttons_run.o \
 ./Core/Src/global.o \
 ./Core/Src/led_control.o \
 ./Core/Src/main.o \
@@ -32,7 +32,7 @@ OBJS += \
 
 C_DEPS += \
 ./Core/Src/button.d \
-./Core/Src/fsm_manual.d \
+./Core/Src/fsm_simple_buttons_run.d \
 ./Core/Src/global.d \
 ./Core/Src/led_control.d \
 ./Core/Src/main.d \
